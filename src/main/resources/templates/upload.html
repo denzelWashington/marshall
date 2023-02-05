@@ -1,0 +1,19 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<form th:action="@{/upload}"  method="post" enctype="multipart/form-data">
+    <h2>Upload XML File</h2>
+
+    <input type="file" name="file" accept="text/xml" class="form-control-file">
+    <input type="submit" value="Upload">
+</form>
+
+
+<h3>Description du fichier upload</h3>
+<p> Informations
+<ul>
+    <li th:text="'Size of file: '+ ${file?.size} + ' Mb'">
+    </li>
+    <li th:text="'Name of file: '+ ${file?.name}">
+    </li>
+</ul>
+</p>

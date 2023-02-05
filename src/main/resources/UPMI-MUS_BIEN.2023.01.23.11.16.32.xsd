@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="MUS_BIENS" type="MUS_BIENSType"/>
+  <xs:complexType name="EMPLACEMENT_PARENTType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="display" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="EMPLACEMENT_TRIType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="display" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="MODIFY_DATEType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="display" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ETAT_AVANCE_SAISIEType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="display" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="MUSEEType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="display" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="COLLECTIONType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="display" use="optional"/>
+        <xs:attribute type="xs:string" name="digest" use="optional"/>
+        <xs:attribute type="xs:string" name="source" use="optional"/>
+        <xs:attribute type="xs:string" name="table_name" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="TYPE_BIENType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="display" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="STATUT_BIENType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="display" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="MARQUAGEType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="display" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="EMPLACEMENT_MUSEEType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="display" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LOCALISATIONType">
+    <xs:sequence>
+      <xs:element type="EMPLACEMENT_MUSEEType" name="EMPLACEMENT_MUSEE" minOccurs="0"/>
+      <xs:element type="xs:string" name="PRECISIONS_LOCALISATION" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DENOMINATIONType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="display" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="SHType">
+    <xs:sequence>
+      <xs:element type="DENOMINATIONType" name="DENOMINATION"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DESIGNATIONType">
+    <xs:sequence>
+      <xs:element type="SHType" name="SH" minOccurs="0"/>
+      <xs:element type="xs:string" name="PRECISION_DESIGNATION"/>
+      <xs:element type="xs:string" name="NB_PART" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MATIEREType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="display" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="MATIERE_TECHNIQUEType">
+    <xs:sequence>
+      <xs:element type="MATIEREType" name="MATIERE" minOccurs="0"/>
+      <xs:element type="TECHNIQUEType" name="TECHNIQUE" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MATIERE_TECHNIQUESType">
+    <xs:sequence>
+      <xs:element type="MATIERE_TECHNIQUEType" name="MATIERE_TECHNIQUE" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MASSE_UNITEType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="display" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DIMENSIONType">
+    <xs:choice maxOccurs="unbounded" minOccurs="0">
+      <xs:element type="xs:string" name="MASSE"/>
+      <xs:element type="MASSE_UNITEType" name="MASSE_UNITE"/>
+      <xs:element type="xs:string" name="HAUTEUR"/>
+      <xs:element name="TYPE_DIMENSION">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="46"/>
+            <xs:enumeration value="47"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="HAUTEUR_UNITEType" name="HAUTEUR_UNITE"/>
+      <xs:element type="xs:string" name="DIAMETRE"/>
+      <xs:element type="xs:string" name="PRECISION_DIMENSION"/>
+      <xs:element type="xs:string" name="LONGUEUR"/>
+      <xs:element type="xs:string" name="LARGEUR"/>
+      <xs:element name="PROFONDEUR">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="8.30"/>
+            <xs:enumeration value="52.00"/>
+            <xs:enumeration value="48.00"/>
+            <xs:enumeration value="140.00"/>
+            <xs:enumeration value="47.00"/>
+            <xs:enumeration value="116.00"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="xs:string" name="EPAISSEUR"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="HAUTEUR_UNITEType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="display" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DIMENSIONSType">
+    <xs:sequence>
+      <xs:element type="DIMENSIONType" name="DIMENSION" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TYPE_INSCRIPTIONType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="display" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="INSCRIPTIONType">
+    <xs:sequence>
+      <xs:element type="TYPE_INSCRIPTIONType" name="TYPE_INSCRIPTION" minOccurs="0"/>
+      <xs:element type="xs:string" name="TRANSCRIPTION"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="INSCRIPTIONSType">
+    <xs:sequence>
+      <xs:element type="INSCRIPTIONType" name="INSCRIPTION" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SUJET_DETAILSType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="PRECISION_SUJET"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SUJETSType">
+    <xs:sequence>
+      <xs:element type="SUJET_DETAILSType" name="SUJET_DETAILS"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="INDEXATIONType">
+    <xs:sequence>
+      <xs:element type="SUJETSType" name="SUJETS"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DESCRIPTIONType">
+    <xs:sequence>
+      <xs:element type="MATIERE_TECHNIQUESType" name="MATIERE_TECHNIQUES" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="DIMENSIONSType" name="DIMENSIONS" minOccurs="0"/>
+      <xs:element type="INSCRIPTIONSType" name="INSCRIPTIONS" minOccurs="0"/>
+      <xs:element type="INDEXATIONType" name="INDEXATION" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DATE_EXECUTION_DATATION_DEBUTType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="display" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DATE_EXECUTION_DATATION_FINType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="display" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DATE_EXECUTION_DATATIONType">
+    <xs:sequence>
+      <xs:element type="DATE_EXECUTION_DATATION_DEBUTType" name="DATE_EXECUTION_DATATION_DEBUT"/>
+      <xs:element type="DATE_EXECUTION_DATATION_FINType" name="DATE_EXECUTION_DATATION_FIN" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DATE_EXECUTIONType">
+    <xs:sequence>
+      <xs:element type="DATE_EXECUTION_DATATIONType" name="DATE_EXECUTION_DATATION"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DATES_EXECUTIONType">
+    <xs:sequence>
+      <xs:element type="DATE_EXECUTIONType" name="DATE_EXECUTION"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PERIODE_EXECUTIONType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="display" use="optional"/>
+        <xs:attribute type="xs:string" name="digest" use="optional"/>
+        <xs:attribute type="xs:string" name="source" use="optional"/>
+        <xs:attribute type="xs:string" name="table_name" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="CREATION_EXECUTIONType">
+    <xs:sequence>
+      <xs:element type="STYLEType" name="STYLE" minOccurs="0"/>
+      <xs:element type="DATES_EXECUTIONType" name="DATES_EXECUTION" minOccurs="0"/>
+      <xs:element type="PERIODE_EXECUTIONType" name="PERIODE_EXECUTION" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CREATIONS_EXECUTIONSType">
+    <xs:sequence>
+      <xs:element type="CREATION_EXECUTIONType" name="CREATION_EXECUTION"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TYPE_DOCType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="display" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DOCUMENT_TEXTType">
+    <xs:sequence>
+      <xs:element type="TYPE_DOCType" name="TYPE_DOC"/>
+      <xs:element type="xs:string" name="DOC_TEXT"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DOCUMENTS_TEXTSType">
+    <xs:sequence>
+      <xs:element type="DOCUMENT_TEXTType" name="DOCUMENT_TEXT"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DOCUMENTATIONType">
+    <xs:sequence>
+      <xs:element type="DOCUMENTS_TEXTSType" name="DOCUMENTS_TEXTS"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ETAT_CONSERVATIONType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="PRECISIONS_ETAT_CONSERV"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ADMINISTRATIONType">
+    <xs:sequence>
+      <xs:element type="BLOC_NOTE_ADMSType" name="BLOC_NOTE_ADMS" minOccurs="0"/>
+      <xs:element name="REPRISE_HISTO_ETAT_AVANCE">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Non"/>
+            <xs:enumeration value="Données importées : Ariane Devanthéry - 02.11.2017 (Liste objets MUMH)"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PROPType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="display" use="optional"/>
+        <xs:attribute type="xs:string" name="digest" use="optional"/>
+        <xs:attribute type="xs:string" name="source" use="optional"/>
+        <xs:attribute type="xs:string" name="table_name" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="GESTType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="display" use="optional"/>
+        <xs:attribute type="xs:string" name="digest" use="optional"/>
+        <xs:attribute type="xs:string" name="source" use="optional"/>
+        <xs:attribute type="xs:string" name="table_name" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DONNEES_PATRIType">
+    <xs:sequence>
+      <xs:element type="PROPType" name="PROP"/>
+      <xs:element type="GESTType" name="GEST"/>
+      <xs:element name="NOTES_PATRI" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="§Confidentialité§"/>
+            <xs:enumeration value="Non"/>
+            <xs:enumeration value="non"/>
+            <xs:enumeration value="Oui"/>
+            <xs:enumeration value="oui"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ANCIENNES_APPARTENANCESType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="PRECISIONS_APPARTENANCE"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="HISTORIQUE_APPARTENANCESType">
+    <xs:sequence>
+      <xs:element type="ANCIENNES_APPARTENANCESType" name="ANCIENNES_APPARTENANCES" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="XML_FIELDType">
+    <xs:sequence>
+      <xs:element type="MARQUAGEType" name="MARQUAGE"/>
+      <xs:element type="LOCALISATIONType" name="LOCALISATION"/>
+      <xs:element type="DESIGNATIONType" name="DESIGNATION"/>
+      <xs:element type="DESCRIPTIONType" name="DESCRIPTION" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="CREATIONS_EXECUTIONSType" name="CREATIONS_EXECUTIONS" minOccurs="0"/>
+      <xs:element type="DOCUMENTATIONType" name="DOCUMENTATION" minOccurs="0"/>
+      <xs:element type="ETAT_CONSERVATIONType" name="ETAT_CONSERVATION" minOccurs="0"/>
+      <xs:element type="ADMINISTRATIONType" name="ADMINISTRATION"/>
+      <xs:element type="DONNEES_PATRIType" name="DONNEES_PATRI"/>
+      <xs:element type="HISTORIQUE_APPARTENANCESType" name="HISTORIQUE_APPARTENANCES"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MUS_BIENType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="UNIQUE_KEY"/>
+      <xs:element type="xs:string" name="SORT"/>
+      <xs:element type="xs:string" name="DISPLAY"/>
+      <xs:element type="xs:string" name="DISPLAY_DENOMINATION" minOccurs="0"/>
+      <xs:element type="xs:string" name="DISPLAY_PERSONNE"/>
+      <xs:element type="EMPLACEMENT_PARENTType" name="EMPLACEMENT_PARENT" minOccurs="0"/>
+      <xs:element type="EMPLACEMENT_TRIType" name="EMPLACEMENT_TRI" minOccurs="0"/>
+      <xs:element name="CREATE_USER">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Devanthéry Ariane"/>
+            <xs:enumeration value="system"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="CREATE_DATE">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute type="xs:string" name="display" use="optional"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="MODIFY_USER">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Aude Spicher"/>
+            <xs:enumeration value="§Créé par§"/>
+            <xs:enumeration value="Ariane Devanthéry"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="MODIFY_DATEType" name="MODIFY_DATE"/>
+      <xs:element type="ETAT_AVANCE_SAISIEType" name="ETAT_AVANCE_SAISIE"/>
+      <xs:element type="MUSEEType" name="MUSEE"/>
+      <xs:element type="xs:string" name="NUM_INVENTAIRE"/>
+      <xs:element type="xs:string" name="NB_OBJETS_LOT"/>
+      <xs:element type="COLLECTIONType" name="COLLECTION"/>
+      <xs:element type="TYPE_BIENType" name="TYPE_BIEN"/>
+      <xs:element type="STATUT_BIENType" name="STATUT_BIEN"/>
+      <xs:element type="xs:string" name="ILINK"/>
+      <xs:element type="xs:string" name="PSBC_SCORE"/>
+      <xs:element type="xs:string" name="PSBC_SCORE_G1"/>
+      <xs:element type="xs:string" name="PSBC_SCORE_G2"/>
+      <xs:element type="xs:string" name="PSBC_SCORE_G3"/>
+      <xs:element type="XML_FIELDType" name="XML_FIELD"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="STYLEType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="display" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="TYPE_INFORMATIONType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="display" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="BLOC_NOTE_ADMType">
+    <xs:sequence>
+      <xs:element type="TYPE_INFORMATIONType" name="TYPE_INFORMATION"/>
+      <xs:element type="xs:string" name="INFORMATION"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BLOC_NOTE_ADMSType">
+    <xs:sequence>
+      <xs:element type="BLOC_NOTE_ADMType" name="BLOC_NOTE_ADM"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TECHNIQUEType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="display" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="CREATE_DATEType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="display" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="MUS_BIENSType">
+    <xs:sequence>
+      <xs:element type="MUS_BIENType" name="MUS_BIEN" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
